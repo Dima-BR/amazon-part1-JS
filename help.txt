@@ -1,0 +1,46 @@
+//https://www.squarespace.com/templates/alameda-fluid-demo
+
+
+https://www.youtube.com/watch?v=TmcEmsyYKXE&t=994s >> 54min done :)
+
+https://www.youtube.com/watch?v=2exKokkn8o0&t=1772s&ab_channel=SuperSimpleDev >> done 🤩
+
+https://www.youtube.com/watch?v=Bcz3zVogiI0&ab_channel=SuperSimpleDev >> 22min >> 12:30
+
+
+/*
+to get Dates will use library for it 
+ - DayJS external library: https://unpkg.com/dayjs@1.11.10/dayjs.min.js
+ - this documentation for the dayjs https://day.js.org/docs/en/parse/string-format
+
+ 1. will get today date
+ 2. do calculations (like add 7 or 3 days ..)
+ 3. display dates in easy format day-Month day in number (Tuesday, May 2)
+
+
+ *** to avoid el convinstion name with library and our code we should use ESM version 
+    ESM ==> ECMAScript Module
+
+*/
+
+// video 15 we learend about the export default and export named 
+
+
+// for delivery radio button 
+    /*
+        1. Save the data 
+            a. Delivery time 
+            b. price 
+            if you add it to cart array/object you will notice there is a  duplication with the delivery time and price so will create another object for delivery option to save the time and price and will link it using ID check images below 🙂 👇🏼
+           https://i.ibb.co/ZWxcSj8/Screenshot-2024-05-02-at-12-07-14-PM.png
+
+           https://i.ibb.co/MGWTKXd/Screenshot-2024-05-02-at-12-10-46-PM.png
+
+           ⭐️ we call this technich Normalize Data 
+
+        2. Generate the HTML
+        3. Make it interactive 
+    */
+
+
+
