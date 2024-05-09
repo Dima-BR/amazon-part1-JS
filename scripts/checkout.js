@@ -1,4 +1,4 @@
-import { cart, addToCart, removeProduct, updateQuantity } from '../data/cart.js';
+import { cart, addToCart, removeProduct, updateQuantity, updateDeliveryOption } from '../data/cart.js';
 import { products } from '../data/products.js';
 import { formatPrice } from './utils/money.js';
 import { deliveryOptions } from '../data/deliveryOption.js';
@@ -25,7 +25,7 @@ cart.forEach(((cartItem) => {
     deliveryOptions.forEach((option) => {
         if (option.id === deliveryOptionId) {
             deliveryOption = option;
-            console.log("deliveryOption***", deliveryOption);
+            // console.log("deliveryOption***", deliveryOption);
         }
     });
     const today = dayjs();
@@ -152,12 +152,12 @@ function deliveryOptionHTML(matchingProduct, cartItem) {
 
 
         let isChecked = cartItem.deliveryOptionId === deliveryOption.id;
-        console.log({
-            cartItem: cartItem.deliveryOptionId,
-            deliveryOption: deliveryOption.id,
-            result: cartItem.deliveryOptionId === deliveryOption.id,
-            isChecked: isChecked
-        });
+        // console.log({
+        //     cartItem: cartItem.deliveryOptionId,
+        //     deliveryOption: deliveryOption.id,
+        //     result: cartItem.deliveryOptionId === deliveryOption.id,
+        //     isChecked: isChecked
+        // });
 
         //2. create html for each item 
         html += `
@@ -195,9 +195,17 @@ export function totalCart() {
 }
 totalCart();
 
-// document.querySelectorAll('.js-delivery-option').forEach(el => {
-//     el.addEventListener('click', () => {
-//         updateDeliveryOption(productId, deliveryOptionId);
-//     })
-// })
+document.querySelectorAll('.js-delivery-option').forEach(el => {
+    el.addEventListener('click', () => {
+        const {productId, deliveryOptionId} = el.dataset;
+        console.log({
+            "productId###": productId,
+            deliveryOptionId: deliveryOptionId,
+            "typeof productId": typeof productId,
+            "typeof deliveryOptionId": typeof deliveryOptionId
+        });
+        updateDeliveryOption(productId, deliveryOptionId);
+        window.location.reload(); // will enhanced later by create function to rerender the page
+    })
+})
 

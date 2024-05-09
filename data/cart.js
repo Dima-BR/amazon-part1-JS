@@ -1,15 +1,15 @@
-// export let cart = JSON.parse(localStorage.getItem('cart')) || [];
-export let cart = [{
-    productId: 1,
-    quantity: 3,
-    deliveryOptionId: 1
-},
-{
-   productId: 2,
-   quantity: 4,
-   deliveryOptionId: 2
-}]
-localStorage.setItem('cart', JSON.stringify(cart))
+export let cart = JSON.parse(localStorage.getItem('cart')) || [];
+// export let cart = [{
+//     productId: 1,
+//     quantity: 3,
+//     deliveryOptionId: 1
+// },
+// {
+//    productId: 2,
+//    quantity: 4,
+//    deliveryOptionId: 2
+// }]
+// localStorage.setItem('cart', JSON.stringify(cart))
 
 
 if(cart === null || cart.length == 0 || cart === undefined){
@@ -102,24 +102,27 @@ export function removeProduct(productId){
 
 // Update date when user select different delivery option
 // param >> product id & delivery option id
-// export function updateDeliveryOption(productId, deliveryOptionId){
-//     let matchingItem;
-//     console.log({
-//         cart: cart,
-//         productId: productId,
-//         deliveryOptionId: deliveryOptionId
-//     });
 
-//     cart.forEach((cartItem) => {
-//         console.log("con1", productId === Number(cartItem.productId));
-//         console.log("con2", productId === cartItem.productId);
-//         if(productId === Number(cartItem.productId)|| productId === cartItem.productId){
-//             console.log("productId", productId, "cartItem.productId", cartItem.productId);
-//             matchingItem = cartItem;
-//         } 
-//     });
-//     console.log("matchingItem", matchingItem);
-//     matchingItem.deliveryOptionId = deliveryOptionId;
+export function updateDeliveryOption(productId, deliveryOptionId) {
+    let matchingItem;
+    console.log({
+        cart: cart,
+        productId: productId,
+        deliveryOptionId: deliveryOptionId
+    });
 
-//     saveToLocalStorage();
-// }
+    cart.forEach((cartItem) => {
+        console.log("con1", productId === Number(cartItem.productId));
+        console.log("con2", productId === cartItem.productId);
+        console.log("typeof productId", typeof productId);
+        console.log("typeof deliveryOptionId", typeof deliveryOptionId);
+        if(Number(productId) === Number(cartItem.productId)|| productId === cartItem.productId){
+            console.log("productId", productId, "cartItem.productId", cartItem.productId);
+            matchingItem = cartItem;
+        } 
+    });
+    console.log("matchingItem", matchingItem);
+    matchingItem.deliveryOptionId = Number(deliveryOptionId);
+
+    saveToLocalStorage();
+}
