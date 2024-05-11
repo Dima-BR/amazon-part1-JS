@@ -50,7 +50,6 @@ export function addToCart(productId){
             deliveryOptionId:1
         })
     }
-    console.log("cart-addToCart",cart);
     saveToLocalStorage();
 }
 export function updateQuantity(){
@@ -69,8 +68,6 @@ export function updateQuantity(){
         cart.forEach((cartItem) => {
           cartQuantity += cartItem.quantity;
         });
-      
-        // return console.log("calculateCartQuantity cartQuantity",cartQuantity);
       }
       calculateCartQuantity();
 
@@ -79,10 +76,8 @@ export function removeProduct(productId){
 
     cart.forEach((cartItem)=>{
         if(cartItem.productId !== Number(productId)){
-            // console.log("productId", productId, "cartItem.productId", cartItem.productId);
             newCart.push(cartItem);
         }
-        // console.log("productId", productId, "cartItem.quantity", cartItem.quantity);
     })
 
     cart = newCart;
@@ -90,13 +85,10 @@ export function removeProduct(productId){
     let cartQuantity = 0;
     cart.forEach((cartItem)=>{
         cartQuantity += cartItem.quantity
-        // console.log("cartQuantity Inside remove", cartQuantity);
     })
-    // console.log("cartQuantity outside remove", cartQuantity);
     
     saveToLocalStorage();
     location.reload()
-    // console.log("newCart", newCart);
 }
 
 
@@ -105,23 +97,12 @@ export function removeProduct(productId){
 
 export function updateDeliveryOption(productId, deliveryOptionId) {
     let matchingItem;
-    console.log({
-        cart: cart,
-        productId: productId,
-        deliveryOptionId: deliveryOptionId
-    });
 
     cart.forEach((cartItem) => {
-        console.log("con1", productId === Number(cartItem.productId));
-        console.log("con2", productId === cartItem.productId);
-        console.log("typeof productId", typeof productId);
-        console.log("typeof deliveryOptionId", typeof deliveryOptionId);
         if(Number(productId) === Number(cartItem.productId)|| productId === cartItem.productId){
-            console.log("productId", productId, "cartItem.productId", cartItem.productId);
             matchingItem = cartItem;
         } 
     });
-    console.log("matchingItem", matchingItem);
     matchingItem.deliveryOptionId = Number(deliveryOptionId);
 
     saveToLocalStorage();
